@@ -6,7 +6,7 @@ import pickle as pkl
 
 
 class BERTDataset(Dataset):
-    def __init__(self, dfg_corpus_path, cfg_corpus_path, vocab, seq_len, encoding="utf-8", corpus_lines=None, on_memory=True):
+    def __init__(self, cfg_corpus_path, dfg_corpus_path, vocab, seq_len, encoding="utf-8", corpus_lines=None, on_memory=True):
         self.vocab = vocab
         self.seq_len = seq_len
 
@@ -199,29 +199,8 @@ class BERTDataset(Dataset):
         if self.on_memory:
             return self.cfg_lines[item][0], self.cfg_lines[item][1], self.dfg_lines[item][0], self.dfg_lines[item][1]
 
-        # now only on_memory copurs are supported
-        # else:
-        #     line = self.file.__next__()
-        #     if line is None:
-        #         self.file.close()
-        #         self.file = open(self.corpus_path, "r", encoding=self.encoding)
-        #         line = self.file.__next__()
-
-        #     t1, t2 = line[:-1].split("\t")
-        #     return t1, t2 
-
 
     def get_random_line(self):
         if self.on_memory:
             l = self.cfg_lines[random.randrange(len(self.cfg_lines))]
             return l[1]
-
-        # now only on_memory copurs are supported
-        # line = self.file.__next__()
-        # if line is None:
-        #     self.file.close()
-        #     self.file = open(self.corpus_path, "r", encoding=self.encoding)
-        #     for _ in range(random.randint(self.corpus_lines if self.corpus_lines < 1000 else 1000)):
-        #         self.random_file.__next__()
-        #     line = self.random_file.__next__()
-        # return line[:-1].split("\t")[1] 
