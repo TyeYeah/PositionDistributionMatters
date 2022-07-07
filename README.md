@@ -30,6 +30,7 @@ Train the `BIRD` model and construct `ACFG+` of function:
 ```bash
 ~ $ cd PositionDistributionMatters
 ~/PositionDistributionMatters $ cd BIRD
+# prepare binaries in bin_bird/ and bin_pdm/
 ~/PositionDistributionMatters/BIRD $ python r2exp.py
 # see main function for only `bird` model training, or instruction embedding
 # training output in `data` dir in `BIRD`
